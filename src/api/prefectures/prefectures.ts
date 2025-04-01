@@ -1,4 +1,4 @@
-import { get } from "../client";
+import { get } from "@/api/client";
 import { useQuery } from "@tanstack/react-query";
 
 export type Prefecture = {
