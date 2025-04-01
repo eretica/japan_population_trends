@@ -11,7 +11,8 @@
     "stylelint": "stylelint 'src/**/*.scss'",
     "stylelint:fix": "stylelint 'src/**/*.scss' --fix",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.71.1",
