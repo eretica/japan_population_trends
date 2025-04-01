@@ -46,4 +46,35 @@ describe("get", () => {
 
     await expect(get("/endpoint")).rejects.toThrow("Error: 400 Bad Request");
   });
+
+  it("パラメーターを指定した場合、fetchが想定されたパラメーターで呼ばれること", async () => {
+    const fetchMock = vi.spyOn(window, "fetch").mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          data: "data",
+        }),
+        {
+          status: 200,
+          statusText: "OK",
+        },
+      ),
+    );
+
+    await get("/endpoint", {
+      char: "str",
+      emptyString: "",
+      numeric: 0,
+      boolean: false,
+    });
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      "http://example.com/endpoint?char=str&emptyString=&numeric=0&boolean=false",
+      {
+        method: "GET",
+        headers: {
+          "X-API-KEY": "DUMMY_API_KEY",
+        },
+      },
+    );
+  });
 });
