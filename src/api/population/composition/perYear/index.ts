@@ -2,6 +2,7 @@ export { usePopulationCompositionPerYear } from "./PopulationCompositionPerYear"
 export type {
   PopulationCompositionPerYear,
   PopulationCompositionPerYearResponse,
+  PopulationDataWithPrefCode,
 } from "./PopulationCompositionPerYear";
 export type {
   TOTAL_POPULATION,

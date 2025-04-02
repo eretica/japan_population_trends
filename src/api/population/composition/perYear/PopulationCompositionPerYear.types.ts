@@ -3,7 +3,7 @@ export type TOTAL_POPULATION = {
   data: {
     year: number;
     value: number;
-  };
+  }[];
 };
 
 export type YOUNG_POPULATION = {
@@ -12,7 +12,7 @@ export type YOUNG_POPULATION = {
     year: number;
     value: number;
     rate: number;
-  };
+  }[];
 };
 
 export type WORKING_AGE_POPULATION = {
@@ -21,7 +21,7 @@ export type WORKING_AGE_POPULATION = {
     year: number;
     value: number;
     rate: number;
-  };
+  }[];
 };
 
 export type ELDERLY_POPULATION = {
@@ -30,7 +30,7 @@ export type ELDERLY_POPULATION = {
     year: number;
     value: number;
     rate: number;
-  };
+  }[];
 };
 
 // tupleでも良さそうだが、順序が保証がされてるかは確認できないので、union型で定義し利用する
