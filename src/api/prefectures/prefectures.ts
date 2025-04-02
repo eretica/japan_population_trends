@@ -7,7 +7,7 @@ export type Prefecture = {
 };
 
 export type PrefecturesResponse = {
-  message: string;
+  message: string | null;
   result: Prefecture[];
 };
 

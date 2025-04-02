@@ -8,12 +8,12 @@ export type PopulationCompositionPerYear = {
 };
 
 export type PopulationCompositionPerYearResponse = {
-  message: string;
+  message: string | null;
   result: PopulationCompositionPerYear;
 };
 
 export type PopulationDataWithPrefCode = {
-  message: string;
+  message: string | null;
   result: { prefCode: number } & PopulationCompositionPerYear;
 };
 
