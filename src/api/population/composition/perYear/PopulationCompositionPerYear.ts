@@ -1,5 +1,5 @@
 import { get } from "@/api/client";
-import { useQuery } from "@tanstack/react-query";
+import { useQueries, UseQueryOptions } from "@tanstack/react-query";
 import { POPULATION } from "./PopulationCompositionPerYear.types";
 
 export type PopulationCompositionPerYear = {
@@ -12,13 +12,34 @@ export type PopulationCompositionPerYearResponse = {
   result: PopulationCompositionPerYear;
 };
 
-type Props = {
-  prefCode: string;
+export type PopulationDataWithPrefCode = {
+  message: string;
+  result: { prefCode: number } & PopulationCompositionPerYear;
 };
 
-export const usePopulationCompositionPerYear = (props: Props) => {
-  return useQuery<PopulationCompositionPerYearResponse>({
-    queryKey: ["population/composition/perYear", props],
-    queryFn: () => get("/api/v1/population/composition/perYear", props),
+// APIが単体で取得しかできないため、useQueriesを使用して擬似的に複数取得できるようにしている
+export const usePopulationCompositionPerYear = (prefCodes: number[]) => {
+  return useQueries<
+    UseQueryOptions<
+      PopulationCompositionPerYearResponse,
+      Error,
+      PopulationDataWithPrefCode
+    >[]
+  >({
+    queries: prefCodes.map((prefCode) => ({
+      queryKey: ["population/composition/perYear", prefCode],
+      queryFn: () =>
+        get<PopulationCompositionPerYearResponse>(
+          "/api/v1/population/composition/perYear",
+          { prefCode },
+        ),
+      select: (data) => ({
+        ...data,
+        result: {
+          ...data.result,
+          prefCode,
+        },
+      }),
+    })),
   });
 };
