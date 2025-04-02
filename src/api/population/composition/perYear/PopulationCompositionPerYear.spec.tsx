@@ -28,23 +28,26 @@ describe("usePopulationCompositionPerYear", () => {
       ),
     );
 
-    const { result } = renderHook(() => usePopulationCompositionPerYear([1]), {
-      wrapper: ({ children }) => {
-        const queryClient = new QueryClient({
-          defaultOptions: {
-            queries: {
-              retry: false,
+    const { result } = renderHook(
+      () => usePopulationCompositionPerYear({ prefCodes: [1] }),
+      {
+        wrapper: ({ children }) => {
+          const queryClient = new QueryClient({
+            defaultOptions: {
+              queries: {
+                retry: false,
+              },
             },
-          },
-        });
+          });
 
-        return (
-          <QueryClientProvider client={queryClient}>
-            {children}
-          </QueryClientProvider>
-        );
+          return (
+            <QueryClientProvider client={queryClient}>
+              {children}
+            </QueryClientProvider>
+          );
+        },
       },
-    });
+    );
 
     await waitFor(() => {
       expect(result.current[0].isLoading).toBe(false);
