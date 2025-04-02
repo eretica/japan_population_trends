@@ -1,6 +1,6 @@
 import { Prefecture } from "@/api/prefectures";
-import styles from "./PrefectureCheckbox.module.scss";
-import { usePrefectureCheckboxComponent } from "@/components/PrefectureCheckbox/PrefectureCheckbox.component.hooks.ts";
+import styles from "./PrefectureCheckbox.component.module.scss";
+import { usePrefectureCheckboxComponent } from "./PrefectureCheckbox.component.hooks.ts";
 
 type Props = {
   prefectures: Prefecture[];
