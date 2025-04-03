@@ -1,8 +1,8 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { usePopulationCompositionPerYear } from "./PopulationCompositionPerYear";
+import { usePopulationCompositionPerYearQueries } from "./PopulationCompositionPerYear";
 
-describe("usePopulationCompositionPerYear", () => {
+describe("usePopulationCompositionPerYearQueries", () => {
   it("selectの利用部分で想定通りのオブジェクトが最終的に生成されていること", async () => {
     vi.spyOn(window, "fetch").mockResolvedValue(
       new Response(
@@ -29,7 +29,7 @@ describe("usePopulationCompositionPerYear", () => {
     );
 
     const { result } = renderHook(
-      () => usePopulationCompositionPerYear({ prefCodes: [1] }),
+      () => usePopulationCompositionPerYearQueries({ prefCodes: [1] }),
       {
         wrapper: ({ children }) => {
           const queryClient = new QueryClient({

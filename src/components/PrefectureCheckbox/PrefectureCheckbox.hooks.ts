@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import { usePrefectures } from "@/api/prefectures";
+import { usePrefecturesQuery } from "@/api/prefectures";
 
 export const usePrefectureCheckbox = () => {
-  const { data, isLoading } = usePrefectures();
+  const { data, isLoading } = usePrefecturesQuery();
 
   const prefectures = useMemo(() => data?.result || [], [data]);
 

@@ -1,2 +1,2 @@
-export { usePrefectures } from "./prefectures";
+export { usePrefecturesQuery } from "./prefectures";
 export type { Prefecture, PrefecturesResponse } from "./prefectures";

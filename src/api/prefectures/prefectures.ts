@@ -11,7 +11,7 @@ export type PrefecturesResponse = {
   result: Prefecture[];
 };
 
-export const usePrefectures = () => {
+export const usePrefecturesQuery = () => {
   return useQuery<PrefecturesResponse>({
     queryKey: ["prefectures"],
     queryFn: () => get("/api/v1/prefectures"),

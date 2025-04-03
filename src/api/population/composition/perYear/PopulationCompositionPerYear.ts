@@ -22,7 +22,9 @@ type Props = {
 };
 
 // APIが単体で取得しかできないため、useQueriesを使用して擬似的に複数取得できるようにしている
-export const usePopulationCompositionPerYear = ({ prefCodes }: Props) => {
+export const usePopulationCompositionPerYearQueries = ({
+  prefCodes,
+}: Props) => {
   return useQueries<
     UseQueryOptions<
       PopulationCompositionPerYearResponse,

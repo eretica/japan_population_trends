@@ -1,4 +1,4 @@
-export { usePopulationCompositionPerYear } from "./PopulationCompositionPerYear";
+export { usePopulationCompositionPerYearQueries } from "./PopulationCompositionPerYear";
 export type {
   PopulationCompositionPerYear,
   PopulationCompositionPerYearResponse,
