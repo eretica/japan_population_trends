@@ -1,4 +1,4 @@
-export type TOTAL_POPULATION = {
+export type TotalPopulation = {
   label: "総人口";
   data: {
     year: number;
@@ -6,7 +6,7 @@ export type TOTAL_POPULATION = {
   }[];
 };
 
-export type YOUNG_POPULATION = {
+export type YoungPopulation = {
   label: "年少人口";
   data: {
     year: number;
@@ -15,7 +15,7 @@ export type YOUNG_POPULATION = {
   }[];
 };
 
-export type WORKING_AGE_POPULATION = {
+export type WorkingAgePopulation = {
   label: "生産年齢人口";
   data: {
     year: number;
@@ -24,7 +24,7 @@ export type WORKING_AGE_POPULATION = {
   }[];
 };
 
-export type ELDERLY_POPULATION = {
+export type ElderlyPopulation = {
   label: "老年人口";
   data: {
     year: number;
@@ -34,8 +34,8 @@ export type ELDERLY_POPULATION = {
 };
 
 // tupleでも良さそうだが、順序が保証がされてるかは確認できないので、union型で定義し利用する
-export type POPULATION =
-  | TOTAL_POPULATION
-  | YOUNG_POPULATION
-  | WORKING_AGE_POPULATION
-  | ELDERLY_POPULATION;
+export type Population =
+  | TotalPopulation
+  | YoungPopulation
+  | WorkingAgePopulation
+  | ElderlyPopulation;

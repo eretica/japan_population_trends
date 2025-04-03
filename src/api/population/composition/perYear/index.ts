@@ -5,9 +5,9 @@ export type {
   PopulationDataWithPrefCode,
 } from "./PopulationCompositionPerYear";
 export type {
-  TOTAL_POPULATION,
-  YOUNG_POPULATION,
-  WORKING_AGE_POPULATION,
-  ELDERLY_POPULATION,
-  POPULATION,
+  TotalPopulation,
+  YoungPopulation,
+  WorkingAgePopulation,
+  ElderlyPopulation,
+  Population,
 } from "./PopulationCompositionPerYear.types";

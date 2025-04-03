@@ -1,10 +1,10 @@
 import { get } from "@/api/client";
 import { useQueries, UseQueryOptions } from "@tanstack/react-query";
-import { POPULATION } from "./PopulationCompositionPerYear.types";
+import { Population } from "./PopulationCompositionPerYear.types";
 
 export type PopulationCompositionPerYear = {
   boundaryYear: number;
-  data: POPULATION[];
+  data: Population[];
 };
 
 export type PopulationCompositionPerYearResponse = {
