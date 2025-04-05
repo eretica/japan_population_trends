@@ -12,7 +12,7 @@ import {
   POPULATION_OPTIONS,
   PREFECTURE_COLORS,
 } from "./PopulationCompositionPerYearGraph.constatns.ts";
-import { usePopulationCompositionPerYearGraph } from "@/components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.component.hooks.ts";
+import { usePopulationCompositionPerYearGraph } from "@/routes/-components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.component.hooks.ts";
 import { PopulationDataWithPrefCode } from "@/api/population/composition/perYear";
 import { Prefecture } from "@/api/prefectures";
 import styles from "./PopulationCompositionPerYearGraph.component.module.scss";

@@ -1,4 +1,4 @@
-import { PopulationType } from "@/components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.types.ts";
+import { PopulationType } from "@/routes/-components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.types";
 
 export const POPULATION_OPTIONS: {
   label: string;

@@ -1,5 +1,5 @@
-import { PopulationCompositionPerYearGraphComponent } from "@/components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.component.tsx";
-import { usePopulationCompositionPerYearGraphContainer } from "@/components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.container.hooks.ts";
+import { PopulationCompositionPerYearGraphComponent } from "@/routes/-components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.component";
+import { usePopulationCompositionPerYearGraphContainer } from "@/routes/-components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.container.hooks";
 
 type Props = {
   prefCodes: number[];
