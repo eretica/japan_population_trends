@@ -2,7 +2,6 @@ import {
   PopulationDataWithPrefCode,
   usePopulationCompositionPerYearQueries,
 } from "@/api/population/composition/perYear";
-import { PopulationCompositionPerYearGraphComponent } from "@/components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.component.tsx";
 import { usePrefecturesQuery } from "@/api/prefectures";
 import { useMemo } from "react";
 
@@ -10,7 +9,9 @@ type Props = {
   prefCodes: number[];
 };
 
-export const PopulationCompositionPerYearGraph = ({ prefCodes }: Props) => {
+export const usePopulationCompositionPerYearGraphContainer = ({
+  prefCodes,
+}: Props) => {
   const prefecturesQuery = usePrefecturesQuery();
 
   const populationCompositionPerYearQueries =
@@ -30,11 +31,8 @@ export const PopulationCompositionPerYearGraph = ({ prefCodes }: Props) => {
     );
   }, [populationCompositionPerYearQueries]);
 
-  return (
-    <PopulationCompositionPerYearGraphComponent
-      prefectures={prefectures}
-      populationCompositionPerYears={populationCompositionPerYears}
-      prefCodes={prefCodes}
-    />
-  );
+  return {
+    prefectures,
+    populationCompositionPerYears,
+  };
 };

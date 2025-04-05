@@ -1,1 +1,1 @@
-export { PrefectureCheckbox } from "./PrefectureCheckbox";
+export { PrefectureCheckboxContainer } from "./PrefectureCheckbox.container.tsx";

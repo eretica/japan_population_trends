@@ -1,13 +1,13 @@
 import { PrefectureCheckboxComponent } from "./PrefectureCheckbox.component.tsx";
-import { usePrefectureCheckbox } from "./PrefectureCheckbox.hooks.ts";
+import { usePrefectureCheckboxContainer } from "./PrefectureCheckbox.container.hooks.ts";
 
 type Props = {
   values: number[];
   onChange: (prefecture: number[]) => void;
 };
 
-export const PrefectureCheckbox = ({ values, onChange }: Props) => {
-  const { isLoading, prefectures } = usePrefectureCheckbox();
+export const PrefectureCheckboxContainer = ({ values, onChange }: Props) => {
+  const { isLoading, prefectures } = usePrefectureCheckboxContainer();
 
   // todo あとでSkeletonとか表示するかも
   if (isLoading) {
