@@ -1,0 +1,11 @@
+.container {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+
+  > input {
+    cursor: pointer;
+  }
+}
+
