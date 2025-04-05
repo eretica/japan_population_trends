@@ -4,11 +4,11 @@
 }
 
 .switches {
-  justify-content: center;
   display: flex;
   flex-wrap: wrap;
+  gap: 0 10px;
   align-items: center;
-  gap: 0 10px
+  justify-content: center
 }
 
 
@@ -26,6 +26,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
