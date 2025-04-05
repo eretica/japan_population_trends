@@ -41,7 +41,7 @@ export const PopulationCompositionPerYearGraphComponent = ({
   });
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.switches}>
         {POPULATION_OPTIONS.map((option) => (
           <Radio
@@ -56,12 +56,12 @@ export const PopulationCompositionPerYearGraphComponent = ({
           </Radio>
         ))}
       </div>
-      <ResponsiveContainer width={"100%"} height={500}>
+      <ResponsiveContainer width={"100%"} height={300}>
         <LineChart
           data={normalizedPopulationCompositionPerYears}
           margin={{
             top: 30,
-            right: 50,
+            right: 0,
             left: 20,
             bottom: 5,
           }}
@@ -69,19 +69,15 @@ export const PopulationCompositionPerYearGraphComponent = ({
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="year"
-            axisLine={{ strokeWidth: 1, stroke: "#666" }}
-            tickLine={{ strokeWidth: 1, stroke: "#666" }}
             label={{
               value: `年`,
               position: "insideBottomRight",
-              offset: -35,
-              dy: -45,
+              offset: 0,
+              dy: 5,
             }}
           />
           <YAxis
             domain={["dataMin", "dataMax"]}
-            axisLine={{ strokeWidth: 1, stroke: "#666" }}
-            tickLine={{ strokeWidth: 1, stroke: "#666" }}
             tickFormatter={(value) => {
               return value.toLocaleString();
             }}
@@ -117,7 +113,7 @@ export const PopulationCompositionPerYearGraphComponent = ({
               dataKey={`${prefCode}.${selectedPopulation}.value`}
               // 都道府県コードは 1-47の範囲なので-1
               stroke={PREFECTURE_COLORS[prefCode - 1]}
-              strokeDasharray="3 4 5 2"
+              strokeDasharray="4 1"
             />
           ))}
         </LineChart>
