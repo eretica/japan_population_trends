@@ -1,0 +1,114 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ release ]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    outputs:
+      cache_key: ${{ steps.create_cache_key.outputs.cache_key }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        id: setup_nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".tool-versions"
+      - name: create cache key
+        id: create_cache_key
+        run: |
+          echo "cache_key=${{ runner.os }}-node-${{ steps.setup_nodejs.outputs.node-version }}-npm-${{ hashFiles('**/package-lock.json') }}" >> $GITHUB_OUTPUT
+      - name: Cache node modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ steps.create_cache_key.outputs.cache_key }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+
+  eslint:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ needs.setup.outputs.cache_key }}
+
+      - name: Run ESLint
+        run: npm run lint
+
+  typecheck:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ needs.setup.outputs.cache_key }}
+
+      - name: Run TypeScript type checking
+        run: npm run typecheck  
+
+  stylelint:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ needs.setup.outputs.cache_key }}
+
+      - name: Run Stylelint
+        run: npm run stylelint
+
+  test:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ needs.setup.outputs.cache_key }}
+
+      - name: Run tests
+        run: npm test
