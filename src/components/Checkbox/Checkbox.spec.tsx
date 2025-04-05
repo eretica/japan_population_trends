@@ -58,6 +58,6 @@ describe("Checkbox", () => {
   it("クリックするとonChangeValueが呼ばれること", async () => {
     const { user, onChangeValue } = setup({ initialChecked: false });
     await user.click(screen.getByLabelText("テストラベル"));
-    expect(onChangeValue).toHaveBeenCalledWith("test-value");
+    expect(onChangeValue).toBeCalledWith("apple");
   });
 });
