@@ -1,12 +1,6 @@
 import { get } from "./client";
-import { beforeAll } from "vitest";
 
 describe("get", () => {
-  beforeAll(() => {
-    import.meta.env.VITE_API_KEY = "DUMMY_API_KEY";
-    import.meta.env.VITE_API_DOMAIN = "http://example.com";
-  });
-
   it("fetchが想定されたパラメーターで呼ばれること", async () => {
     const fetchMock = vi.spyOn(window, "fetch").mockResolvedValue(
       new Response(
@@ -23,11 +17,8 @@ describe("get", () => {
     const data = await get("/endpoint");
 
     expect(data).toEqual({ data: "data" });
-    expect(fetchMock).toHaveBeenCalledWith("http://example.com/endpoint", {
+    expect(fetchMock).toHaveBeenCalledWith("/api/endpoint", {
       method: "GET",
-      headers: {
-        "X-API-KEY": "DUMMY_API_KEY",
-      },
     });
   });
 
@@ -68,12 +59,9 @@ describe("get", () => {
     });
 
     expect(fetchMock).toHaveBeenCalledWith(
-      "http://example.com/endpoint?char=str&emptyString=&numeric=0&boolean=false",
+      "/api/endpoint?char=str&emptyString=&numeric=0&boolean=false",
       {
         method: "GET",
-        headers: {
-          "X-API-KEY": "DUMMY_API_KEY",
-        },
       },
     );
   });

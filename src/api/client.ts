@@ -13,15 +13,9 @@ export const get = async <T>(
       )
     : "";
 
-  const response = await fetch(
-    `${import.meta.env.VITE_API_DOMAIN}${endpoint}${query ? `?${query}` : ""}`,
-    {
-      method: "GET",
-      headers: {
-        "X-API-KEY": import.meta.env.VITE_API_KEY,
-      },
-    },
-  );
+  const response = await fetch(`/api${endpoint}${query ? `?${query}` : ""}`, {
+    method: "GET",
+  });
 
   if (!response.ok) {
     throw new Error(`Error: ${response.status} ${response.statusText}`);
