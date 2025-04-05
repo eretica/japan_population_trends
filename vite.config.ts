@@ -9,6 +9,11 @@ export default defineConfig({
       "@/": `${__dirname}/src/`,
     },
   },
+  css: {
+    modules: {
+      localsConvention: "camelCaseOnly",
+    },
+  },
   test: {
     globals: true,
     clearMocks: true,
