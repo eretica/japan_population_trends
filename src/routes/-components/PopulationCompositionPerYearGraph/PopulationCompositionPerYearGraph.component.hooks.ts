@@ -24,15 +24,28 @@ export const usePopulationCompositionPerYearGraph = ({
     setSelectedPopulation(populationType);
   };
 
-  const prefectureNameByPrefCode = useMemo(() => {
+  const prefectureDictByPrefCode = useMemo(() => {
     return prefectures.reduce(
       (acc, prefecture) => {
-        acc[prefecture.prefCode] = prefecture.prefName;
+        acc[prefecture.prefCode] = {
+          name: prefecture.prefName,
+          isLoaded: !!populationCompositionPerYears.find(
+            (populationCompositionPerYear) =>
+              populationCompositionPerYear.result.prefCode ===
+              prefecture.prefCode,
+          ),
+        };
         return acc;
       },
-      {} as Record<number, string>,
+      {} as Record<
+        number,
+        {
+          name: string;
+          isLoaded: boolean;
+        }
+      >,
     );
-  }, [prefectures]);
+  }, [prefectures, populationCompositionPerYears]);
 
   // 年度の範囲や感覚は全て同じなので最初に見つかったデータを年のサンプルとして確保
   const years = useMemo(() => {
@@ -63,14 +76,16 @@ export const usePopulationCompositionPerYearGraph = ({
             if (!prefPopulation) {
               return {
                 ...acc,
-                [prefCode]: { prefName: prefectureNameByPrefCode[prefCode] },
+                [prefCode]: {
+                  prefName: prefectureDictByPrefCode[prefCode].name,
+                },
               };
             }
 
             return {
               ...acc,
               [prefCode]: {
-                prefName: prefectureNameByPrefCode[prefCode],
+                prefName: prefectureDictByPrefCode[prefCode].name,
                 boundaryYear: prefPopulation.result.boundaryYear,
                 totalPopulation: prefPopulation.result.data
                   .find((v) => v.label === "総人口")
@@ -95,13 +110,13 @@ export const usePopulationCompositionPerYearGraph = ({
     years,
     prefCodes,
     populationCompositionPerYears,
-    prefectureNameByPrefCode,
+    prefectureDictByPrefCode,
   ]);
 
   return {
     selectedPopulation,
     handleChangePopulation,
-    prefectureNameByPrefCode,
+    prefectureDictByPrefCode,
     normalizedPopulationCompositionPerYears,
   };
 };

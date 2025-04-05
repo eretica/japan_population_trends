@@ -33,7 +33,7 @@ export const PopulationCompositionPerYearGraphComponent = ({
     selectedPopulation,
     handleChangePopulation,
     normalizedPopulationCompositionPerYears,
-    prefectureNameByPrefCode,
+    prefectureDictByPrefCode,
   } = usePopulationCompositionPerYearGraph({
     prefCodes,
     prefectures,
@@ -95,13 +95,25 @@ export const PopulationCompositionPerYearGraphComponent = ({
             labelFormatter={(year) => `${year}年`}
             formatter={(v) => v.toLocaleString() + "人"}
           />
-          <Legend />
+          <Legend
+            formatter={(label, payload) => {
+              const prefCode = (payload.dataKey as string).split(".")[0];
+
+              return (
+                <>
+                  {label}
+                  {!prefectureDictByPrefCode[Number(prefCode)].isLoaded && (
+                    <span className={styles.loader}></span>
+                  )}
+                </>
+              );
+            }}
+          />
           {prefCodes.map((prefCode) => (
             <Line
               key={prefCode}
               type="monotone"
-              name={prefectureNameByPrefCode[prefCode]}
-              // todo 暫定で固定の区分を表示
+              name={prefectureDictByPrefCode[prefCode].name}
               dataKey={`${prefCode}.${selectedPopulation}.value`}
               // 都道府県コードは 1-47の範囲なので-1
               stroke={PREFECTURE_COLORS[prefCode - 1]}

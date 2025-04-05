@@ -24,11 +24,7 @@ describe("usePopulationCompositionPerYearGraph", () => {
       }),
     );
 
-    act(() =>
-      result.current.handleChangePopulation({
-        target: { value: "youngPopulation" },
-      } as React.ChangeEvent<HTMLInputElement>),
-    );
+    act(() => result.current.handleChangePopulation("youngPopulation"));
 
     expect(result.current.selectedPopulation).toBe("youngPopulation");
   });
@@ -245,7 +241,7 @@ describe("usePopulationCompositionPerYearGraph", () => {
     ).toStrictEqual([]);
   });
 
-  it("prefCodeをもとにprefCodeとprefNameのマッピングを作成すること", () => {
+  it("prefCodeをもとにprefCodeとprefName,取得済みののマッピングを作成すること", () => {
     const { result } = renderHook(() =>
       usePopulationCompositionPerYearGraph({
         prefCodes: [],
@@ -254,14 +250,28 @@ describe("usePopulationCompositionPerYearGraph", () => {
           { prefCode: 2, prefName: "青森県" },
           { prefCode: 3, prefName: "岩手県" },
         ],
-        populationCompositionPerYears: [],
+        populationCompositionPerYears: [
+          {
+            message: null,
+            result: {
+              prefCode: 2,
+              data: [
+                {
+                  label: "老年人口",
+                  data: [{ year: 2022, rate: 2, value: 100 }],
+                },
+              ],
+              boundaryYear: 2022,
+            },
+          },
+        ],
       }),
     );
 
-    expect(result.current.prefectureNameByPrefCode).toStrictEqual({
-      1: "北海道",
-      2: "青森県",
-      3: "岩手県",
+    expect(result.current.prefectureDictByPrefCode).toStrictEqual({
+      1: { name: "北海道", isLoaded: false },
+      2: { name: "青森県", isLoaded: true },
+      3: { name: "岩手県", isLoaded: false },
     });
   });
 });
