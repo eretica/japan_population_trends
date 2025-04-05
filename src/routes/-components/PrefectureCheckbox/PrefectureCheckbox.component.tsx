@@ -23,6 +23,7 @@ export const PrefectureCheckboxComponent = ({
     <div className={styles.container}>
       {prefectures.map((prefecture) => (
         <Checkbox
+          key={prefecture.prefCode}
           id={String(prefecture.prefCode)}
           value={prefecture.prefCode}
           name={prefecture.prefName}
