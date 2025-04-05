@@ -16,6 +16,7 @@ import { usePopulationCompositionPerYearGraph } from "@/routes/-components/Popul
 import { PopulationDataWithPrefCode } from "@/api/population/composition/perYear";
 import { Prefecture } from "@/api/prefectures";
 import styles from "./PopulationCompositionPerYearGraph.component.module.scss";
+import { Radio } from "@/components/Radio";
 
 type Props = {
   prefCodes: number[];
@@ -43,17 +44,16 @@ export const PopulationCompositionPerYearGraphComponent = ({
     <div>
       <div className={styles.switches}>
         {POPULATION_OPTIONS.map((option) => (
-          <div key={option.value}>
-            <input
-              type="radio"
-              id={option.value}
-              name={option.label}
-              value={option.value}
-              checked={selectedPopulation === option.value}
-              onChange={handleChangePopulation}
-            />
-            <label htmlFor={option.value}>{option.label}</label>
-          </div>
+          <Radio
+            key={option.value}
+            id={option.value}
+            name={option.label}
+            value={option.value}
+            checked={selectedPopulation === option.value}
+            onChangeValue={handleChangePopulation}
+          >
+            {option.label}
+          </Radio>
         ))}
       </div>
       <ResponsiveContainer width={"100%"} height={500}>
