@@ -1,6 +1,7 @@
 import { Prefecture } from "@/api/prefectures";
 import styles from "./PrefectureCheckbox.component.module.scss";
 import { usePrefectureCheckboxComponent } from "./PrefectureCheckbox.component.hooks.ts";
+import { Checkbox } from "@/components/Checkbox";
 
 type Props = {
   prefectures: Prefecture[];
@@ -21,20 +22,15 @@ export const PrefectureCheckboxComponent = ({
   return (
     <div className={styles.container}>
       {prefectures.map((prefecture) => (
-        <div key={prefecture.prefCode}>
-          <input
-            type="checkbox"
-            id={String(prefecture.prefCode)}
-            name={prefecture.prefName}
-            checked={values.some((value) => value === prefecture.prefCode)}
-            onChange={() => {
-              handleChange(prefecture.prefCode);
-            }}
-          />
-          <label htmlFor={String(prefecture.prefCode)}>
-            {prefecture.prefName}
-          </label>
-        </div>
+        <Checkbox
+          id={String(prefecture.prefCode)}
+          value={prefecture.prefCode}
+          name={prefecture.prefName}
+          checked={values.some((value) => value === prefecture.prefCode)}
+          onChangeValue={handleChange}
+        >
+          {prefecture.prefName}
+        </Checkbox>
       ))}
     </div>
   );
