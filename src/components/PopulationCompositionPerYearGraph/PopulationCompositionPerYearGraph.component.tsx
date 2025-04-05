@@ -8,24 +8,33 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { GraphData } from "./PopulationCompositionPerYearGraph.types.ts";
 import { PREFECTURE_COLORS } from "./PopulationCompositionPerYearGraph.constatns.ts";
+import { usePopulationCompositionPerYearGraph } from "@/components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.component.hooks.ts";
+import { PopulationDataWithPrefCode } from "@/api/population/composition/perYear";
+import { Prefecture } from "@/api/prefectures";
 
 type Props = {
   prefCodes: number[];
-  data: GraphData[];
-  prefectureNameByPrefCode: Record<number, string>;
+  prefectures: Prefecture[];
+  populationCompositionPerYears: PopulationDataWithPrefCode[];
 };
 
 export const PopulationCompositionPerYearGraphComponent = ({
-  data,
+  populationCompositionPerYears,
   prefCodes,
-  prefectureNameByPrefCode,
+  prefectures,
 }: Props) => {
+  const { normalizedPopulationCompositionPerYears, prefectureNameByPrefCode } =
+    usePopulationCompositionPerYearGraph({
+      prefCodes,
+      prefectures,
+      populationCompositionPerYears,
+    });
+
   return (
     <ResponsiveContainer width={"100%"} height={500}>
       <LineChart
-        data={data}
+        data={normalizedPopulationCompositionPerYears}
         margin={{
           top: 30,
           right: 50,
