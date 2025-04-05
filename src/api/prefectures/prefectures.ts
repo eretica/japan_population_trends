@@ -1,5 +1,5 @@
 import { get } from "@/api/client";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 export type Prefecture = {
   prefCode: number;
@@ -12,7 +12,7 @@ export type PrefecturesResponse = {
 };
 
 export const usePrefecturesQuery = () => {
-  return useQuery<PrefecturesResponse>({
+  return useSuspenseQuery<PrefecturesResponse>({
     queryKey: ["prefectures"],
     queryFn: () => get("/api/v1/prefectures"),
   });

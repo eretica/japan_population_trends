@@ -1,5 +1,6 @@
 import { PrefectureCheckboxComponent } from "./PrefectureCheckbox.component.tsx";
 import { usePrefectureCheckboxContainer } from "./PrefectureCheckbox.container.hooks.ts";
+import { Skeleton } from "@/components/Skeleton/Skeleton.tsx";
 
 type Props = {
   values: number[];
@@ -7,12 +8,7 @@ type Props = {
 };
 
 export const PrefectureCheckboxContainer = ({ values, onChange }: Props) => {
-  const { isLoading, prefectures } = usePrefectureCheckboxContainer();
-
-  // todo あとでSkeletonとか表示するかも
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  const { prefectures } = usePrefectureCheckboxContainer();
 
   return (
     <PrefectureCheckboxComponent

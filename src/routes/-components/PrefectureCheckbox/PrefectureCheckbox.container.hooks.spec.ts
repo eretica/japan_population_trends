@@ -3,7 +3,7 @@ import { renderHook } from "@testing-library/react";
 import { expect, vi, describe, it } from "vitest";
 import * as UsePrefecturesQuery from "@/api/prefectures";
 import { PrefecturesResponse } from "@/api/prefectures/prefectures";
-import { UseQueryResult } from "@tanstack/react-query";
+import { UseSuspenseQueryResult } from "@tanstack/react-query";
 
 describe("usePrefectureCheckboxContainer", () => {
   const setup = () => {
@@ -18,7 +18,7 @@ describe("usePrefectureCheckboxContainer", () => {
             { prefCode: 3, prefName: "岩手県" },
           ],
         },
-      } as UseQueryResult<PrefecturesResponse>);
+      } as UseSuspenseQueryResult<PrefecturesResponse, Error>);
 
     return {
       usePrefecturesQueryMock,
@@ -41,8 +41,8 @@ describe("usePrefectureCheckboxContainer", () => {
     const { usePrefecturesQueryMock } = setup();
 
     usePrefecturesQueryMock.mockReturnValue({
-      data: undefined,
-    } as UseQueryResult<PrefecturesResponse>);
+      data: {},
+    } as UseSuspenseQueryResult<PrefecturesResponse, Error>);
 
     const { result } = renderHook(() => usePrefectureCheckboxContainer());
 
