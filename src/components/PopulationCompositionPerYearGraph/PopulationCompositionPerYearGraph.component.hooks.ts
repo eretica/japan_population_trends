@@ -1,7 +1,10 @@
 import type { PopulationDataWithPrefCode } from "@/api/population/composition/perYear";
-import { useMemo } from "react";
+import { ChangeEvent, useMemo, useState } from "react";
 import type { Prefecture } from "@/api/prefectures";
-import { GraphData } from "./PopulationCompositionPerYearGraph.types.ts";
+import {
+  GraphData,
+  PopulationType,
+} from "./PopulationCompositionPerYearGraph.types.ts";
 
 type Props = {
   prefCodes: number[];
@@ -14,6 +17,13 @@ export const usePopulationCompositionPerYearGraph = ({
   prefectures,
   populationCompositionPerYears,
 }: Props) => {
+  const [selectedPopulation, setSelectedPopulation] =
+    useState<PopulationType>("totalPopulation");
+
+  const handleChangePopulation = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedPopulation(event.target.value as PopulationType);
+  };
+
   const prefectureNameByPrefCode = useMemo(() => {
     return prefectures.reduce(
       (acc, prefecture) => {
@@ -89,6 +99,8 @@ export const usePopulationCompositionPerYearGraph = ({
   ]);
 
   return {
+    selectedPopulation,
+    handleChangePopulation,
     prefectureNameByPrefCode,
     normalizedPopulationCompositionPerYears,
   };

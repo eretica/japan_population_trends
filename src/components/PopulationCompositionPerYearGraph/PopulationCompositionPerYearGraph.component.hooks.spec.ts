@@ -1,8 +1,38 @@
 import { usePopulationCompositionPerYearGraph } from "./PopulationCompositionPerYearGraph.component.hooks";
-import { renderHook } from "@testing-library/react";
+import { renderHook, act } from "@testing-library/react";
 import { expect } from "vitest";
 
 describe("usePopulationCompositionPerYearGraph", () => {
+  it("総人口が人口表示タイプの初期値であること", () => {
+    const { result } = renderHook(() =>
+      usePopulationCompositionPerYearGraph({
+        prefCodes: [],
+        prefectures: [],
+        populationCompositionPerYears: [],
+      }),
+    );
+
+    expect(result.current.selectedPopulation).toBe("totalPopulation");
+  });
+
+  it("handleChangePopulationで人口表示タイプが変わること", () => {
+    const { result } = renderHook(() =>
+      usePopulationCompositionPerYearGraph({
+        prefCodes: [],
+        prefectures: [],
+        populationCompositionPerYears: [],
+      }),
+    );
+
+    act(() =>
+      result.current.handleChangePopulation({
+        target: { value: "youngPopulation" },
+      } as React.ChangeEvent<HTMLInputElement>),
+    );
+
+    expect(result.current.selectedPopulation).toBe("youngPopulation");
+  });
+
   it("渡したデータからグラフ用のデータを作成する", () => {
     const { result } = renderHook(() =>
       usePopulationCompositionPerYearGraph({

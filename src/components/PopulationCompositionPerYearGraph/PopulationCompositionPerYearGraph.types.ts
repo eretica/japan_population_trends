@@ -1,3 +1,9 @@
+export type PopulationType =
+  | "totalPopulation"
+  | "youngPopulation"
+  | "workingAgePopulation"
+  | "elderlyPopulation";
+
 export type GraphData = {
   year: number;
   [prefCode: number]: {

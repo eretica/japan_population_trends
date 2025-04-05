@@ -1,3 +1,27 @@
+import { PopulationType } from "@/components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.types.ts";
+
+export const POPULATION_OPTIONS: {
+  label: string;
+  value: PopulationType;
+}[] = [
+  {
+    label: "総人口",
+    value: "totalPopulation",
+  },
+  {
+    label: "年少人口",
+    value: "youngPopulation",
+  },
+  {
+    label: "生産年齢人口",
+    value: "workingAgePopulation",
+  },
+  {
+    label: "老年人口",
+    value: "elderlyPopulation",
+  },
+];
+
 // ありがとうAI
 export const PREFECTURE_COLORS = [
   "#1F77B4", // 北海道 - 雪と海の青
