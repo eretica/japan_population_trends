@@ -61,8 +61,8 @@ export const PopulationCompositionPerYearGraphComponent = ({
           data={normalizedPopulationCompositionPerYears}
           margin={{
             top: 30,
-            right: 0,
-            left: 20,
+            right: 5,
+            left: 25,
             bottom: 5,
           }}
         >
