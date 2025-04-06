@@ -229,4 +229,47 @@ describe("usePopulationCompositionPerYearGraphContainer", () => {
       prefCodes: [1, 2, 3],
     });
   });
+
+  it("データが1つも取得できていない時はeitherLoadedがfalseになる事", () => {
+    const { usePopulationCompositionPerYearMock } = setup();
+
+    usePopulationCompositionPerYearMock.mockReturnValue([
+      { data: undefined },
+      { data: undefined },
+    ] as UseQueryResult<PopulationDataWithPrefCode>[]);
+
+    const { result } = renderHook(() =>
+      usePopulationCompositionPerYearGraphContainer({
+        prefCodes: [1, 2, 3],
+      }),
+    );
+
+    expect(result.current.eitherLoaded).toStrictEqual(false);
+  });
+
+  it("データが1つでも取得できている時はeitherLoadedがtrueになる事", () => {
+    const { usePopulationCompositionPerYearMock } = setup();
+
+    usePopulationCompositionPerYearMock.mockReturnValue([
+      {
+        data: {
+          message: null,
+          result: {
+            data: [],
+            prefCode: 1,
+            boundaryYear: 2020,
+          },
+        },
+      },
+      { data: undefined },
+    ] as UseQueryResult<PopulationDataWithPrefCode>[]);
+
+    const { result } = renderHook(() =>
+      usePopulationCompositionPerYearGraphContainer({
+        prefCodes: [1, 2, 3],
+      }),
+    );
+
+    expect(result.current.eitherLoaded).toStrictEqual(true);
+  });
 });
