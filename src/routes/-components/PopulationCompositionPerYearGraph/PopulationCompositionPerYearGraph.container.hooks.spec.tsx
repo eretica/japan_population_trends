@@ -3,7 +3,7 @@ import * as UsePrefecturesQuery from "@/api/prefectures";
 import { renderHook } from "@testing-library/react";
 import * as UsePopulationCompositionPerYear from "@/api/population/composition/perYear";
 import { vi } from "vitest";
-import { UseQueryResult } from "@tanstack/react-query";
+import { UseQueryResult, UseSuspenseQueryResult } from "@tanstack/react-query";
 import { PrefecturesResponse } from "@/api/prefectures";
 import { PopulationDataWithPrefCode } from "@/api/population/composition/perYear";
 
@@ -20,7 +20,7 @@ describe("usePopulationCompositionPerYearGraphContainer", () => {
             { prefCode: 3, prefName: "岩手県" },
           ],
         },
-      } as UseQueryResult<PrefecturesResponse>);
+      } as UseSuspenseQueryResult<PrefecturesResponse>);
 
     const usePopulationCompositionPerYearMock = vi
       .spyOn(
@@ -107,8 +107,8 @@ describe("usePopulationCompositionPerYearGraphContainer", () => {
     const { usePrefecturesQueryMock } = setup();
 
     usePrefecturesQueryMock.mockReturnValue({
-      data: undefined,
-    } as UseQueryResult<PrefecturesResponse>);
+      data: {},
+    } as UseSuspenseQueryResult<PrefecturesResponse>);
 
     const { result } = renderHook(() =>
       usePopulationCompositionPerYearGraphContainer({
