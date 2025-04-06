@@ -13,7 +13,7 @@ export const get = async <T>(
       )
     : "";
 
-  const response = await fetch(`/api${endpoint}${query ? `?${query}` : ""}`, {
+  const response = await fetch(`${endpoint}${query ? `?${query}` : ""}`, {
     method: "GET",
   });
 
