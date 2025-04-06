@@ -3,6 +3,7 @@ import { handle } from "hono/vercel";
 
 const TARGET_API_HOST = process.env.API_DOMAIN || "";
 const API_KEY = process.env.API_KEY || "";
+const DOMAIN = process.env.VERCEL_PROJECT_PRODUCTION_URL || "";
 
 export const config = {
   runtime: "edge",
@@ -29,10 +30,9 @@ app.all("*", async (c) => {
     const responseData = await response.json();
 
     return c.json(responseData, 200, {
-      // todo origin
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": `https://${DOMAIN}`,
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, X-API-KEY",
+      "Access-Control-Allow-Headers": "Content-Type",
     });
   } catch (error) {
     console.error("Proxy error:", error);
@@ -44,9 +44,9 @@ app.all("*", async (c) => {
 app.options("*", (c) => {
   return c.text("", {
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": `https://${DOMAIN}`,
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, X-API-KEY",
+      "Access-Control-Allow-Headers": "Content-Type",
     },
   });
 });
