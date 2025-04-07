@@ -17,7 +17,7 @@ describe("get", () => {
     const data = await get("/endpoint");
 
     expect(data).toEqual({ data: "data" });
-    expect(fetchMock).toHaveBeenCalledWith("/api/endpoint", {
+    expect(fetchMock).toHaveBeenCalledWith("/endpoint", {
       method: "GET",
     });
   });
@@ -59,7 +59,7 @@ describe("get", () => {
     });
 
     expect(fetchMock).toHaveBeenCalledWith(
-      "/api/endpoint?char=str&emptyString=&numeric=0&boolean=false",
+      "/endpoint?char=str&emptyString=&numeric=0&boolean=false",
       {
         method: "GET",
       },

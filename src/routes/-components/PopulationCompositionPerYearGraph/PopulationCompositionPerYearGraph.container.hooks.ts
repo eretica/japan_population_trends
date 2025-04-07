@@ -31,8 +31,11 @@ export const usePopulationCompositionPerYearGraphContainer = ({
     );
   }, [populationCompositionPerYearQueries]);
 
+  const eitherLoaded = !!populationCompositionPerYears.length;
+
   return {
     prefectures,
     populationCompositionPerYears,
+    eitherLoaded,
   };
 };
