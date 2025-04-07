@@ -17,3 +17,25 @@
     background-color: #f9f9f9;
     border: 1px solid #ccc;
 }
+
+.fallback-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fallback-logo {
+    width: 40vw;
+    height: 40vw;
+    animation: blinking 1s ease-in-out infinite alternate;
+}
+
+// チラチラさせる
+@keyframes blinking {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
