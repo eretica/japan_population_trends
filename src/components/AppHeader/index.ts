@@ -1,1 +1,1 @@
-export { AppHeader } from "./Appheader";
+export { AppHeader } from "./AppHeader.tsx";
