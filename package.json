@@ -13,7 +13,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "server": "tsx server.ts"
+    "server": "tsx server.ts",
+    "prepare": "husky"
   },
   "dependencies": {
     "@hono/node-server": "^1.14.0",
@@ -46,7 +47,9 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "husky": "^9.1.7",
     "jsdom": "^26.0.0",
+    "lint-staged": "^15.5.0",
     "prettier": "3.5.3",
     "sass-embedded": "^1.86.3",
     "stylelint": "^16.17.0",
@@ -57,5 +60,16 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
     "vitest": "^3.1.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.scss": [
+      "stylelint --fix"
+    ],
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
   }
 }
