@@ -12,7 +12,7 @@
     "stylelint:fix": "stylelint 'src/**/*.scss' --fix",
     "preview": "vite preview",
     "test": "vitest",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "server": "tsx server.ts",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
