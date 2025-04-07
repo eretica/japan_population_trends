@@ -7,12 +7,13 @@ export type PopulationCompositionPerYear = {
   data: Population[];
 };
 
-export type PopulationCompositionPerYearResponse = {
+export type PopulationCompositionPerYearActualResponse = {
   message: string | null;
   result: PopulationCompositionPerYear;
 };
 
-export type PopulationDataWithPrefCode = {
+// レスポンスにprefCodeを含めた型
+export type PopulationCompositionPerYearResponse = {
   message: string | null;
   result: { prefCode: number } & PopulationCompositionPerYear;
 };
@@ -27,15 +28,15 @@ export const usePopulationCompositionPerYearQueries = ({
 }: Props) => {
   return useQueries<
     UseQueryOptions<
-      PopulationCompositionPerYearResponse,
+      PopulationCompositionPerYearActualResponse,
       Error,
-      PopulationDataWithPrefCode
+      PopulationCompositionPerYearResponse
     >[]
   >({
     queries: prefCodes.map((prefCode) => ({
       queryKey: ["population/composition/perYear", prefCode],
       queryFn: () =>
-        get<PopulationCompositionPerYearResponse>(
+        get<PopulationCompositionPerYearActualResponse>(
           "/api/v1/population/composition/perYear",
           { prefCode },
         ),

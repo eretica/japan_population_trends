@@ -1,5 +1,5 @@
 import {
-  PopulationDataWithPrefCode,
+  PopulationCompositionPerYearResponse,
   usePopulationCompositionPerYearQueries,
 } from "@/api/population/composition/perYear";
 import { usePrefecturesQuery } from "@/api/prefectures";
@@ -27,7 +27,9 @@ export const usePopulationCompositionPerYearGraphContainer = ({
     return (
       populationCompositionPerYearQueries
         .map((v) => v.data)
-        .filter((v): v is PopulationDataWithPrefCode => v !== undefined) || []
+        .filter(
+          (v): v is PopulationCompositionPerYearResponse => v !== undefined,
+        ) || []
     );
   }, [populationCompositionPerYearQueries]);
 
