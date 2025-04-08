@@ -1,5 +1,5 @@
-import { PopulationCompositionPerYearGraphComponent } from "@/routes/-components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.component";
-import { usePopulationCompositionPerYearGraphContainer } from "@/routes/-components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.container.hooks";
+import { PopulationCompositionPerYearGraphComponent } from "@/pages/root/components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.component.tsx";
+import { usePopulationCompositionPerYearGraphContainer } from "@/pages/root/components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.container.hooks.ts";
 import { Skeleton } from "@/components/Skeleton";
 
 type Props = {

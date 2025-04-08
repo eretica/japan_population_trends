@@ -1,16 +1,11 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
-import { useIndexPage } from "@/routes/-hooks/index.page.hooks.ts";
-import { PrefectureCheckboxContainer } from "./-components/PrefectureCheckbox";
-import { PopulationCompositionPerYearGraphContainer } from "./-components/PopulationCompositionPerYearGraph";
-import styles from "./-styles/index.module.scss";
+import { useRootPage } from "./root.page.hooks.ts";
+import { PrefectureCheckboxContainer } from "./components/PrefectureCheckbox";
+import { PopulationCompositionPerYearGraphContainer } from "./components/PopulationCompositionPerYearGraph";
+import styles from "./root.page.module.scss";
 import { Suspense } from "react";
 
-export const Route = createLazyFileRoute("/")({
-  component: IndexLazy,
-});
-
-function IndexLazy() {
-  const { selectedPrefectures, setSelectedPrefectures } = useIndexPage();
+export const RootPage = () => {
+  const { selectedPrefectures, setSelectedPrefectures } = useRootPage();
 
   return (
     <div className={styles.container}>
@@ -44,4 +39,4 @@ function IndexLazy() {
       )}
     </div>
   );
-}
+};

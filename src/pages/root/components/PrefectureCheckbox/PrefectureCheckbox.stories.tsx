@@ -1,5 +1,5 @@
 import type { Meta } from "@storybook/react";
-import { PrefectureCheckboxComponent } from "./PrefectureCheckbox.component";
+import { PrefectureCheckboxComponent } from "./PrefectureCheckbox.component.tsx";
 import { useState } from "react";
 import { action } from "@storybook/addon-actions";
 

@@ -1,8 +1,8 @@
-import { usePrefectureCheckboxContainer } from "./PrefectureCheckbox.container.hooks";
+import { usePrefectureCheckboxContainer } from "./PrefectureCheckbox.container.hooks.ts";
 import { renderHook } from "@testing-library/react";
 import { expect, vi, describe, it } from "vitest";
 import * as UsePrefecturesQuery from "@/api/prefectures";
-import { PrefecturesResponse } from "@/api/prefectures/prefectures";
+import { PrefecturesResponse } from "@/api/prefectures/prefectures.ts";
 import { UseSuspenseQueryResult } from "@tanstack/react-query";
 
 describe("usePrefectureCheckboxContainer", () => {
