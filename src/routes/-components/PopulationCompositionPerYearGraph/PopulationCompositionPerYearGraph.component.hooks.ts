@@ -1,4 +1,4 @@
-import type { PopulationDataWithPrefCode } from "@/api/population/composition/perYear";
+import type { PopulationCompositionPerYearResponse } from "@/api/population/composition/perYear";
 import { useMemo, useState } from "react";
 import type { Prefecture } from "@/api/prefectures";
 import {
@@ -9,7 +9,7 @@ import {
 type Props = {
   prefCodes: number[];
   prefectures: Prefecture[];
-  populationCompositionPerYears: PopulationDataWithPrefCode[];
+  populationCompositionPerYears: PopulationCompositionPerYearResponse[];
 };
 
 export const usePopulationCompositionPerYearGraph = ({

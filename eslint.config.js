@@ -6,11 +6,13 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 import prettier from "eslint-plugin-prettier";
 import eslintConfigPrettier from "eslint-config-prettier";
+import storybook from "eslint-plugin-storybook";
 
 export default [
   { ignores: ["dist"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  ...storybook.configs["flat/recommended"],
   {
     files: ["**/*.{ts,tsx}"],
     ...reactPlugin.configs.flat.recommended,

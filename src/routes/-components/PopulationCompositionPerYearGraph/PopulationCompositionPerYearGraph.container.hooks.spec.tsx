@@ -5,7 +5,7 @@ import * as UsePopulationCompositionPerYear from "@/api/population/composition/p
 import { vi } from "vitest";
 import { UseQueryResult, UseSuspenseQueryResult } from "@tanstack/react-query";
 import { PrefecturesResponse } from "@/api/prefectures";
-import { PopulationDataWithPrefCode } from "@/api/population/composition/perYear";
+import { PopulationCompositionPerYearResponse } from "@/api/population/composition/perYear";
 
 describe("usePopulationCompositionPerYearGraphContainer", () => {
   const setup = () => {
@@ -70,7 +70,7 @@ describe("usePopulationCompositionPerYearGraphContainer", () => {
         {
           data: undefined,
         },
-      ] as UseQueryResult<PopulationDataWithPrefCode>[]);
+      ] as UseQueryResult<PopulationCompositionPerYearResponse>[]);
 
     return {
       usePrefecturesQueryMock,
@@ -205,7 +205,7 @@ describe("usePopulationCompositionPerYearGraphContainer", () => {
     usePopulationCompositionPerYearMock.mockReturnValue([
       { data: undefined },
       { data: undefined },
-    ] as UseQueryResult<PopulationDataWithPrefCode>[]);
+    ] as UseQueryResult<PopulationCompositionPerYearResponse>[]);
 
     const { result } = renderHook(() =>
       usePopulationCompositionPerYearGraphContainer({
@@ -236,7 +236,7 @@ describe("usePopulationCompositionPerYearGraphContainer", () => {
     usePopulationCompositionPerYearMock.mockReturnValue([
       { data: undefined },
       { data: undefined },
-    ] as UseQueryResult<PopulationDataWithPrefCode>[]);
+    ] as UseQueryResult<PopulationCompositionPerYearResponse>[]);
 
     const { result } = renderHook(() =>
       usePopulationCompositionPerYearGraphContainer({
@@ -262,7 +262,7 @@ describe("usePopulationCompositionPerYearGraphContainer", () => {
         },
       },
       { data: undefined },
-    ] as UseQueryResult<PopulationDataWithPrefCode>[]);
+    ] as UseQueryResult<PopulationCompositionPerYearResponse>[]);
 
     const { result } = renderHook(() =>
       usePopulationCompositionPerYearGraphContainer({

@@ -13,7 +13,7 @@ import {
   PREFECTURE_COLORS,
 } from "./PopulationCompositionPerYearGraph.constatns.ts";
 import { usePopulationCompositionPerYearGraph } from "@/routes/-components/PopulationCompositionPerYearGraph/PopulationCompositionPerYearGraph.component.hooks.ts";
-import { PopulationDataWithPrefCode } from "@/api/population/composition/perYear";
+import { PopulationCompositionPerYearResponse } from "@/api/population/composition/perYear";
 import { Prefecture } from "@/api/prefectures";
 import styles from "./PopulationCompositionPerYearGraph.component.module.scss";
 import { Radio } from "@/components/Radio";
@@ -21,7 +21,7 @@ import { Radio } from "@/components/Radio";
 type Props = {
   prefCodes: number[];
   prefectures: Prefecture[];
-  populationCompositionPerYears: PopulationDataWithPrefCode[];
+  populationCompositionPerYears: PopulationCompositionPerYearResponse[];
 };
 
 export const PopulationCompositionPerYearGraphComponent = ({
