@@ -1,5 +1,5 @@
 import type { Meta } from "@storybook/react";
-import { PopulationCompositionPerYearGraphComponent } from "./PopulationCompositionPerYearGraph.component";
+import { PopulationCompositionPerYearGraphComponent } from "./PopulationCompositionPerYearGraph.component.tsx";
 
 const meta: Meta<typeof PopulationCompositionPerYearGraphComponent> = {
   component: PopulationCompositionPerYearGraphComponent,

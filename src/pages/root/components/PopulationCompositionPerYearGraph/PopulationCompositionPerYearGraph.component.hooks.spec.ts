@@ -1,4 +1,4 @@
-import { usePopulationCompositionPerYearGraph } from "./PopulationCompositionPerYearGraph.component.hooks";
+import { usePopulationCompositionPerYearGraph } from "./PopulationCompositionPerYearGraph.component.hooks.ts";
 import { renderHook, act } from "@testing-library/react";
 import { expect } from "vitest";
 

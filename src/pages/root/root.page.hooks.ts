@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useIndexPage = () => {
+export const useRootPage = () => {
   const [selectedPrefectures, setSelectedPrefectures] = useState<number[]>([]);
 
   return {

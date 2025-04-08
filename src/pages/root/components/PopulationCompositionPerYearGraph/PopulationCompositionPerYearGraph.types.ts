@@ -8,8 +8,6 @@ export type GraphData = {
   year: number;
   [prefCode: number]: {
     prefName: string;
-    // todo 検討中
-    // isLoading: boolean;
     boundaryYear?: number;
     totalPopulation?: {
       value: number;
