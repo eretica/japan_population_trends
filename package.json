@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && npm run storybook:build && npm run build:fix-storybook-subpaths",
-    "build:fix-storybook-subpaths": "sed -i 's|\\./|./storybook/|g' dist/storybook/index.html",
+    "build": "tsc -b && vite build && npm run storybook:build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "stylelint": "stylelint 'src/**/*.scss'",

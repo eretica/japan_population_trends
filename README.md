@@ -10,8 +10,6 @@ https://japan-population-trends-indol.vercel.app/
 
 https://japan-population-trends-indol.vercel.app/storybook/
 
-`結構無理やり同一ホストに公開している感...`
-
 ## setup
 
 依存パッケージインストール
