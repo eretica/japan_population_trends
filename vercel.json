@@ -9,10 +9,6 @@
       "destination": "/storybook/index.html"
     },
     {
-      "source": "/storybook/storybook/(.*)",
-      "destination": "/storybook/$1"
-    },
-    {
       "source": "/storybook/(.*)",
       "destination": "/storybook/$1"
     }
