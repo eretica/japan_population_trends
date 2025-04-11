@@ -15,5 +15,7 @@ export const usePrefecturesQuery = () => {
   return useSuspenseQuery<PrefecturesResponse>({
     queryKey: ["prefectures"],
     queryFn: () => get("/api/v1/prefectures"),
+    // いつ叩いても変わらない値なので無限にキャッシュする
+    staleTime: Infinity,
   });
 };
