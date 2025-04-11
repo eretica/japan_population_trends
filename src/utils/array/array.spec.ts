@@ -9,7 +9,7 @@ describe("range", () => {
     expect(range(8, 8)).toStrictEqual([8]);
   });
 
-  it("範囲が逆転している場合は空配列が返されること", () => {
+  it("範囲が逆転している場合は例外が投げられること", () => {
     expect(() => range(4, 3)).toThrow("指定した範囲が不正です");
     expect(() => range(5, 2)).toThrow("指定した範囲が不正です");
   });
