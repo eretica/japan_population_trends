@@ -47,6 +47,9 @@ export const usePopulationCompositionPerYearQueries = ({
           prefCode,
         },
       }),
+      // いつ叩いても変わらない値なので無限にキャッシュする
+      staleTime: Infinity,
+      cacheTime: Infinity,
     })),
   });
 };

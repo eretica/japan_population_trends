@@ -47,7 +47,7 @@ export const usePopulationCompositionPerYearGraph = ({
     );
   }, [prefectures, populationCompositionPerYears]);
 
-  // 年度の範囲や感覚は全て同じなので最初に見つかったデータを年のサンプルとして確保
+  // 年度の範囲や間隔は全て同じなので最初に見つかったデータを年のサンプルとして確保
   const years = useMemo(() => {
     // 最初にみつかったデータがあるやつを取得
     const firstData = populationCompositionPerYears.find(
